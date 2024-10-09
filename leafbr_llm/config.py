@@ -1,14 +1,19 @@
+import sys
 from pathlib import Path
-
 from dotenv import load_dotenv
-from loguru import logger
+# from loguru import logger
+import logging
 
 # Load environment variables from .env file if it exists
 load_dotenv()
 
 # Paths
 PROJ_ROOT = Path(__file__).resolve().parents[1]
-logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
+# logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
+
+logging.basicConfig(handlers=[logging.FileHandler('leafbr_llm.log'),logging.StreamHandler(sys.stdout)],
+                    format='%(asctime)s %(levelname)s [Thread %(thread)d]: %(message)s',
+                    level=logging.INFO)
 
 DATA_DIR = PROJ_ROOT / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"

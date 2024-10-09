@@ -14,4 +14,12 @@ python-dotenv
 scikit-learn
 tqdm
 typer
+selenium
+retry
+requests
+torch 
+torchvision 
+transformers 
+accelerate
+webdriver_manager
 -e .

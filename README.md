@@ -1,10 +1,10 @@
-# D-LeafBR-LLM
+# LeafBR-LLM
 
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-D-LeafBR-LLM is a research project focused on fine-tuning Large Language Models (LLMs) using drug package inserts (leaflets) from Brazilian medications. The primary goal is to create a structured corpus, called D-LeafBR, composed of official Brazilian drug leaflets, and to use this dataset to fine-tune and evaluate LLMs. The project explores the potential of these models to improve the comprehension of medical information by the general population.
+LeafBR-LLM is a research project focused on fine-tuning Large Language Models (LLMs) using drug package inserts (leaflets) from Brazilian medications. The primary goal is to create a structured corpus, called D-LeafBR, composed of official Brazilian drug leaflets, and to use this dataset to fine-tune and evaluate LLMs. The project explores the potential of these models to improve the comprehension of medical information by the general population.
 
 ## Project Organization
 
@@ -27,7 +27,7 @@ D-LeafBR-LLM is a research project focused on fine-tuning Large Language Models 
 │                         `1.0-jqp-initial-data-exploration`.
 │
 ├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         d_leafbr_llm and configuration for tools like black
+│                         leafbr_llm and configuration for tools like black
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
 │
@@ -39,9 +39,9 @@ D-LeafBR-LLM is a research project focused on fine-tuning Large Language Models 
 │
 ├── setup.cfg          <- Configuration file for flake8
 │
-└── d_leafbr_llm   <- Source code for use in this project.
+└── leafbr_llm   <- Source code for use in this project.
     │
-    ├── __init__.py             <- Makes d_leafbr_llm a Python module
+    ├── __init__.py             <- Makes leafbr_llm a Python module
     │
     ├── config.py               <- Store useful variables and configuration
     │
@@ -58,4 +58,8 @@ D-LeafBR-LLM is a research project focused on fine-tuning Large Language Models 
 ```
 
 --------
+
+## How to setup env
+Run make setup_env
+Run make 
 
