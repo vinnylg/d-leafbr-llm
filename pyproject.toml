@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "leafbr_llm"
+name = "leafbr"
 version = "0.0.1"
 description = "LeafBR-LLM is a research project focused on fine-tuning Large Language Models (LLMs) using drug package inserts (leaflets) from Brazilian medications. The primary goal is to create a structured corpus, called D-LeafBR, composed of official Brazilian drug leaflets, and to use this dataset to fine-tune and evaluate LLMs. The project explores the potential of these models to improve the comprehension of medical information by the general population."
 authors = [
@@ -28,5 +28,5 @@ exclude = '''
 '''
 
 [tool.ruff.lint.isort]
-known_first_party = ["leafbr_llm"]
+known_first_party = ["leafbr"]
 force_sort_within_sections = true

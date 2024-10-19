@@ -1,0 +1,63 @@
+services:
+  leafbr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
+      - JUPYTER_ENABLE_LAB=yes
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    ipc: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack:
+        soft: 67108864
+        hard: 67108864
+    volumes:
+      - ./:/workspace
+      - ./huggingface:/root/.cache/huggingface
+    networks:
+      - scraper-net
+    ports:
+      - 8888:8888
+    runtime: nvidia
+    stdin_open: true
+    tty: true
+    # command: jupyter lab --ip=0.0.0.0 --no-browser --allow-root
+    command: python leafbr/datasets/anvisa/scraper.py
+  selenium-hub:
+    image: selenium/hub
+    container_name: selenium-hub
+    environment:
+      - JAVA_OPTS=-Dselenium.opentelemetry.enabled=false
+    ports:
+      - "4444:4444"
+    networks:
+      - scraper-net
+
+  chrome:
+    image: selenium/node-chrome
+    container_name: selenium-node-chrome
+    environment:
+      - JAVA_OPTS=-Dselenium.opentelemetry.enabled=false
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    depends_on:
+      - selenium-hub
+    networks:
+      - scraper-net
+
+networks:
+  scraper-net:
+    driver: bridge

@@ -1,0 +1,48 @@
+services:
+  leafbr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # env_file: ".env"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - JUPYTER_ENABLE_LAB=yes
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+
+    ipc: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      stack:
+        soft: 67108864
+        hard: 67108864
+
+    volumes:
+      - ./:/workspace # Monta o diretório inteiro no container para desenvolvimento
+      - ./huggingface:/root/.cache/huggingface # Cache local Hugging Face
+      - .home/:~/
+    networks:
+      - scraper-net
+
+    ports:
+      - "8888:8888" # Mapeamento de portas (se você rodar um Jupyter ou algo similar)
+
+    runtime: nvidia # Utiliza o runtime NVIDIA para suportar operações com GPU
+
+    stdin_open: true
+    tty: true
+    # command: python leafllm
+    command: jupyter lab --ip=0.0.0.0 --no-browser --allow-root # Inicia o JupyterLab
+
+networks:
+  scraper-net:
+    driver: bridge
