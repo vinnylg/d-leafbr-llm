@@ -1,5 +1,18 @@
-# Data
-/data/
+# Ignorar todos os arquivos dentro de data/ e subdiretórios
+data/**
+
+# Exceto os diretórios
+!data/**/
+
+# Ignorar tudo dentro de cada subdiretório de data/
+data/raw/*
+data/interm/*
+data/external/*
+data/processed/*
+
+# Exceto os arquivos específicos em processed
+!data/processed/leafbr.json
+!data/processed/leafbr.pkl
 
 # Mac OS-specific storage files
 .DS_Store
@@ -170,3 +183,4 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+huggingface/

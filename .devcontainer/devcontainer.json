@@ -4,6 +4,8 @@
     "service": "leafbr",
     "workspaceFolder": "/workspace",
     "shutdownAction": "stopCompose",
+    "overrideCommand": true,
+    "remoteUser": "vscode",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -52,6 +54,5 @@
                 "ZainChen.json"
             ]
         }
-    },
-    "remoteUser": "vscode"
+    }
 }

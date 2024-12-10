@@ -1,0 +1,27 @@
+# accelerate
+# black
+# flake8
+ipython
+# isort
+jupyterlab
+# loguru
+matplotlib
+# mkdocs
+notebook
+numpy
+pandas
+pip
+python-dotenv
+requests
+retry
+# scikit-learn
+selenium
+# torch 
+# torchvision 
+# tqdm
+# transformers 
+# typer
+# huggingface-hub
+webdriver_manager
+pdfplumber
+pandarallel

@@ -23,4 +23,6 @@ selenium
 # typer
 # huggingface-hub
 webdriver_manager
+pdfplumber
+pandarallel
 -e .
